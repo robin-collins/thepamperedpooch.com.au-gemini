@@ -1,0 +1,1095 @@
+
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>The Pampered Pooch - Professional Dog Grooming | Willunga, SA</title>
+  
+  <!-- SEO and Meta Information -->
+  <meta name="description" content="Expert dog grooming services in Willunga. Professional, gentle care for your beloved pets. Book your appointment today at The Pampered Pooch!">
+  <meta name="keywords" content="dog grooming, Willunga, pet grooming, dog wash, professional grooming, South Australia, pampered pooch">
+  <meta name="author" content="The Pampered Pooch">
+  
+  <!-- Open Graph / Social Media Meta Tags -->
+  <meta property="og:title" content="The Pampered Pooch - Professional Dog Grooming | Willunga, SA">
+  <meta property="og:description" content="Expert dog grooming services in Willunga. Gentle, professional care for your beloved pets.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://thepamperedpooch.com.au">
+  <!-- TODO: Replace with a URL to a representative image for social sharing -->
+  <meta property="og:image" content="https://images.unsplash.com/photo-1590822619219-5843a2965789?w=1200&q=80">
+  
+  <!-- Preload critical resources -->
+  <!-- TODO: Replace with the actual hero image URL once licensed -->
+  <link rel="preload" href="https://images.unsplash.com/photo-1590822619219-5843a2965789?w=1920&q=80" as="image">
+
+  <style>
+    /* 
+    ==============================================
+    CSS Architecture:
+    1. CSS Variables (:root)
+    2. Reset & Base Styles
+    3. Typography & Fluid Sizing
+    4. Utility Classes
+    5. Animation Keyframes & Transitions
+    6. Component Styles (Header, Hero, Services, etc.)
+    7. Responsive Design (Media Queries)
+    8. Accessibility Styles
+    9. Print Styles
+    ==============================================
+    */
+
+    /* 1. CSS Variables (:root) */
+    :root {
+      --color-primary: #9EB7D0; /* Dusty Blue */
+      --color-primary-dark: #7C95B0;
+      --color-primary-light: #DDE5EE;
+      --color-accent: #FABD9E;  /* Soft Peach */
+      --color-accent-dark: #E07A5F; /* Terracotta */
+      --color-neutral-light: #f8f9fa;
+      --color-neutral-medium: #e9ecef;
+      --color-neutral-dark: #6c757d;
+      --color-text: #2C3E50; /* Dark Slate Blue */
+      --color-text-light: #5A6A7B;
+      --color-white: #ffffff;
+
+      --font-family-sans: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, "Helvetica Neue", Arial, sans-serif;
+      --line-height-body: 1.7;
+
+      --spacing-xs: 0.25rem;
+      --spacing-sm: 0.5rem;
+      --spacing-md: 1rem;
+      --spacing-lg: 1.5rem;
+      --spacing-xl: 2.5rem;
+      --spacing-xxl: 4rem;
+      
+      --border-radius: 0.5rem;
+      --shadow-sm: 0 1px 3px 0 rgb(0 0 0 / 0.07);
+      --shadow-md: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.06);
+      --shadow-lg: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
+
+      --transition-fast: 200ms cubic-bezier(0.25, 0.46, 0.45, 0.94);
+      --transition-medium: 350ms cubic-bezier(0.25, 0.46, 0.45, 0.94);
+      --transition-slow: 700ms cubic-bezier(0.33, 1, 0.68, 1);
+    }
+
+    /* 2. Reset & Base Styles */
+    *,
+    *::before,
+    *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html {
+      font-size: 16px;
+    }
+
+    body {
+      font-family: var(--font-family-sans);
+      line-height: var(--line-height-body);
+      color: var(--color-text-light);
+      background-color: var(--color-white);
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+      text-rendering: optimizeLegibility;
+      overflow-x: hidden;
+    }
+
+    img, picture, video, canvas, svg {
+      display: block;
+      max-width: 100%;
+    }
+
+    input, button, textarea, select {
+      font: inherit;
+    }
+    
+    a {
+      color: var(--color-accent-dark);
+      text-decoration: none;
+      transition: color var(--transition-fast);
+    }
+    a:hover {
+      text-decoration: underline;
+      color: var(--color-accent);
+    }
+
+
+    /* 3. Typography & Fluid Sizing */
+    h1, h2, h3 {
+      line-height: 1.2;
+      font-weight: 700;
+      text-wrap: balance;
+      color: var(--color-text);
+    }
+
+    h1 { font-size: clamp(2.8rem, 5vw + 1rem, 5rem); }
+    h2 { font-size: clamp(2rem, 4vw + 1rem, 3.5rem); }
+    h3 { font-size: clamp(1.5rem, 2vw + 1rem, 2.25rem); }
+    p, li, blockquote { font-size: clamp(1rem, 0.5vw + 0.8rem, 1.125rem); }
+
+    .subheadline {
+      font-size: clamp(1.1rem, 1vw + 0.9rem, 1.35rem);
+      max-width: 60ch;
+      opacity: 0.9;
+    }
+
+    /* 4. Utility Classes */
+    .container {
+      width: 100%;
+      max-width: 1280px;
+      margin-left: auto;
+      margin-right: auto;
+      padding-left: var(--spacing-md);
+      padding-right: var(--spacing-md);
+    }
+    .section {
+      padding-top: var(--spacing-xxl);
+      padding-bottom: var(--spacing-xxl);
+      position: relative;
+    }
+    .text-center { text-align: center; }
+    .mb-md { margin-bottom: var(--spacing-md); }
+    .mb-lg { margin-bottom: var(--spacing-lg); }
+    .mt-xl { margin-top: var(--spacing-xl); }
+    .sr-only {
+      position: absolute;
+      width: 1px;
+      height: 1px;
+      padding: 0;
+      margin: -1px;
+      overflow: hidden;
+      clip: rect(0, 0, 0, 0);
+      white-space: nowrap;
+      border-width: 0;
+    }
+    .section-separator {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      color: var(--color-primary-light);
+    }
+    .section-separator svg {
+      width: 48px;
+      height: 48px;
+    }
+    .section-separator::before,
+    .section-separator::after {
+        content: '';
+        display: block;
+        height: 1px;
+        width: 100px;
+        background: var(--color-primary-light);
+    }
+
+    /* 5. Animation Keyframes & Transitions */
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to { opacity: 1; }
+    }
+    @keyframes fadeInUp {
+      from { opacity: 0; transform: translateY(30px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    @keyframes pulse {
+      0%, 100% { transform: scale(1); box-shadow: 0 0 0 0 rgba(250, 189, 158, 0.4); }
+      50% { transform: scale(1.03); box-shadow: 0 0 0 10px rgba(250, 189, 158, 0); }
+    }
+    @keyframes background-pan {
+      0% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+      100% { background-position: 0% 50%; }
+    }
+    @keyframes snip {
+      0%, 100% { transform: rotate(0); } 
+      25% { transform: rotate(-8deg); } 
+      50% { transform: rotate(8deg); } 
+      75% { transform: rotate(-4deg); }
+    }
+
+    .animate-on-scroll {
+      opacity: 0;
+      transform: translateY(30px);
+      transition: opacity var(--transition-slow), transform var(--transition-slow);
+    }
+    .animate-on-scroll.is-visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* 6. Component Styles */
+    
+    /* Button */
+    .btn {
+      display: inline-block;
+      padding: var(--spacing-md) var(--spacing-xl);
+      border-radius: 50px;
+      font-weight: 700;
+      text-decoration: none;
+      border: 2px solid transparent;
+      transition: background-color var(--transition-medium), color var(--transition-medium), transform var(--transition-medium), box-shadow var(--transition-medium);
+      cursor: pointer;
+    }
+    .btn:hover {
+      transform: translateY(-3px);
+      box-shadow: var(--shadow-lg);
+      text-decoration: none;
+    }
+    .btn-primary {
+      background-color: var(--color-accent);
+      color: var(--color-white);
+      font-size: 1.1rem;
+      padding: var(--spacing-lg) var(--spacing-xl);
+    }
+    .btn-primary:hover {
+      background-color: var(--color-accent-dark);
+      color: var(--color-white);
+    }
+    .btn-primary.pulse {
+        animation: pulse 2.5s infinite;
+    }
+    .btn-secondary {
+      background-color: transparent;
+      color: var(--color-accent-dark);
+      border-color: var(--color-accent-dark);
+    }
+    .btn-secondary:hover {
+      background-color: var(--color-accent-dark);
+      color: var(--color-white);
+    }
+    
+    /* Header */
+    .site-header {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      padding: var(--spacing-md) 0;
+      background-color: rgba(255, 255, 255, 0.8);
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+      border-bottom: 1px solid transparent;
+      transition: padding var(--transition-medium), background-color var(--transition-medium), border-color var(--transition-medium);
+    }
+    .site-header.scrolled {
+        padding: var(--spacing-sm) 0;
+        background-color: rgba(255, 255, 255, 0.95);
+        border-bottom-color: var(--color-neutral-medium);
+    }
+    .header-container {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: var(--spacing-sm);
+      font-weight: 700;
+      font-size: 1.5rem;
+      color: var(--color-text);
+    }
+    .logo:hover {
+      text-decoration: none;
+    }
+    .logo svg {
+      width: 32px;
+      height: 32px;
+      color: var(--color-primary);
+    }
+    .main-nav ul {
+      display: flex;
+      list-style: none;
+      gap: var(--spacing-lg);
+    }
+    .main-nav a {
+      font-weight: 600;
+      color: var(--color-text);
+      position: relative;
+    }
+    .main-nav a::after {
+      content: '';
+      position: absolute;
+      bottom: -4px;
+      left: 0;
+      width: 100%;
+      height: 2px;
+      background-color: var(--color-accent);
+      transform: scaleX(0);
+      transform-origin: right;
+      transition: transform var(--transition-medium);
+    }
+    .main-nav a:hover::after {
+      transform: scaleX(1);
+      transform-origin: left;
+    }
+    .mobile-nav-toggle { display: none; }
+    
+    /* Hero Section */
+    .hero {
+      position: relative;
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      color: var(--color-white);
+      text-align: left;
+      padding: var(--spacing-xxl) 0;
+      overflow: hidden;
+    }
+    .hero::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(90deg, rgba(44, 62, 80, 0.8) 0%, rgba(44, 62, 80, 0.4) 60%, rgba(44, 62, 80, 0) 100%);
+      z-index: 1;
+    }
+    .hero-background {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center 30%;
+      z-index: 0;
+    }
+    .hero-bg-pattern {
+      position: absolute;
+      inset: 0;
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='100' height='100' viewBox='0 0 100 100'%3E%3Cpath d='M 50 0 A 50 50 0 0 1 100 50 L 50 50 Z' fill='%23ffffff' fill-opacity='0.05'/%3E%3Cpath d='M 0 50 A 50 50 0 0 1 50 100 L 50 50 Z' fill='%23ffffff' fill-opacity='0.05'/%3E%3C/svg%3E");
+      animation: background-pan 30s linear infinite;
+      z-index: 1;
+      opacity: 0.5;
+    }
+    .hero-content {
+      position: relative;
+      z-index: 2;
+      max-width: 700px;
+    }
+    .hero-content > * {
+      animation: fadeInUp 0.9s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards;
+      opacity: 0;
+    }
+    .hero h1 { animation-delay: 300ms; }
+    .hero .subheadline { animation-delay: 500ms; }
+    .hero .btn { animation-delay: 700ms; }
+    
+    /* Services Section */
+    #services {
+        background-color: var(--color-neutral-light);
+    }
+    .section-header {
+      max-width: 700px;
+      margin: 0 auto var(--spacing-xl) auto;
+    }
+    .services-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: var(--spacing-lg);
+    }
+    .service-card {
+      background-color: var(--color-white);
+      border-radius: var(--border-radius);
+      padding: var(--spacing-xl);
+      text-align: center;
+      box-shadow: var(--shadow-md);
+      transition: transform var(--transition-medium), box-shadow var(--transition-medium);
+      border-top: 4px solid var(--color-primary);
+    }
+    .service-card:hover {
+      transform: translateY(-10px);
+      box-shadow: var(--shadow-lg);
+    }
+    .service-card__icon {
+      width: 64px;
+      height: 64px;
+      color: var(--color-primary);
+      margin: 0 auto var(--spacing-lg) auto;
+      transition: transform var(--transition-medium);
+    }
+    .service-card:hover .service-card__icon {
+      transform: scale(1.1) rotate(-5deg);
+    }
+    .service-card:hover .icon-snip {
+      animation: snip 1s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    }
+    .service-card h3 {
+      color: var(--color-text);
+      margin-bottom: var(--spacing-md);
+    }
+    .service-card__price {
+        font-weight: 700;
+        color: var(--color-primary-dark);
+        margin: var(--spacing-md) 0;
+    }
+    
+    /* About Section */
+    .about-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: var(--spacing-xl);
+      align-items: center;
+    }
+    .about-image-container {
+      border-radius: var(--border-radius);
+      overflow: hidden;
+      box-shadow: var(--shadow-lg);
+      transform: rotate(-2deg);
+      position: relative;
+    }
+     .about-image-container::after {
+        content: '';
+        position: absolute;
+        inset: -10px;
+        border: 2px dashed var(--color-primary-light);
+        border-radius: calc(var(--border-radius) + 10px);
+        z-index: -1;
+        transform: rotate(4deg);
+     }
+    .about-image-container img {
+      transition: transform var(--transition-slow);
+    }
+    .about-image-container:hover img {
+      transform: scale(1.05);
+    }
+    
+    /* Testimonials Section */
+    #testimonials {
+      background-color: var(--color-neutral-light);
+      overflow: hidden;
+    }
+    .testimonial-carousel {
+      position: relative;
+      max-width: 800px;
+      margin: auto;
+      overflow: hidden;
+    }
+    .testimonial-slider {
+      display: flex;
+      transition: transform 600ms cubic-bezier(0.33, 1, 0.68, 1);
+    }
+    .testimonial-slide {
+      flex: 0 0 100%;
+      background-color: var(--color-white);
+      padding: var(--spacing-xl);
+      text-align: center;
+      border-radius: var(--border-radius);
+      box-shadow: var(--shadow-lg);
+    }
+    .testimonial-slide img {
+      width: 100px;
+      height: 100px;
+      border-radius: 50%;
+      object-fit: cover;
+      margin: 0 auto var(--spacing-lg);
+      border: 4px solid var(--color-primary);
+    }
+    .testimonial-review {
+      font-style: italic;
+      margin-bottom: var(--spacing-lg);
+      position: relative;
+      color: var(--color-text-light);
+    }
+    .testimonial-review::before { 
+        content: '“';
+        font-size: 4rem;
+        color: var(--color-primary-light);
+        position: absolute;
+        top: -1.5rem;
+        left: -1rem;
+        font-family: serif;
+    }
+    .testimonial-author {
+      font-weight: 700;
+      color: var(--color-text);
+    }
+    .testimonial-author span {
+      display: block;
+      font-weight: 400;
+      font-style: italic;
+      color: var(--color-neutral-dark);
+    }
+    .testimonial-dots {
+      display: flex;
+      justify-content: center;
+      gap: var(--spacing-sm);
+      margin-top: var(--spacing-lg);
+    }
+    .testimonial-dot {
+      width: 12px;
+      height: 12px;
+      border-radius: 50%;
+      background-color: var(--color-primary);
+      opacity: 0.5;
+      cursor: pointer;
+      border: none;
+      transition: opacity var(--transition-medium), transform var(--transition-medium);
+    }
+    .testimonial-dot.active {
+      opacity: 1;
+      transform: scale(1.2);
+    }
+
+    /* Contact Section */
+    .contact-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: var(--spacing-xl);
+      background: var(--color-white);
+      padding: var(--spacing-xl);
+      border-radius: var(--border-radius);
+      box-shadow: var(--shadow-lg);
+    }
+    .contact-details ul, .business-hours ul {
+      list-style: none;
+    }
+    .contact-details li, .business-hours li {
+      display: flex;
+      align-items: center;
+      gap: var(--spacing-md);
+      margin-bottom: var(--spacing-md);
+    }
+    .contact-details svg {
+      width: 24px;
+      height: 24px;
+      color: var(--color-primary);
+      flex-shrink: 0;
+    }
+    .map-container {
+      aspect-ratio: 16 / 9;
+      background: var(--color-neutral-light) url("data:image/svg+xml,%3Csvg width='100' height='100' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M25 50.5a25 25 0 1050 0 25 25 0 10-50 0z' fill='%23dde5ee' fill-rule='evenodd'/%3E%3C/svg%3E") center/20px repeat;
+      border-radius: var(--border-radius);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      color: var(--color-neutral-dark);
+      font-style: italic;
+      text-align: center;
+      border: 1px solid var(--color-neutral-medium);
+    }
+    .map-container svg {
+        width: 48px;
+        height: 48px;
+        color: var(--color-accent-dark);
+        margin-bottom: var(--spacing-sm);
+    }
+
+    /* CTA Banner Section */
+    .cta-banner {
+        background-color: var(--color-primary);
+        background-image: linear-gradient(45deg, var(--color-primary-dark), var(--color-primary));
+        color: var(--color-white);
+        text-align: center;
+    }
+    .cta-banner h2 {
+        color: var(--color-white);
+    }
+
+    /* Footer */
+    .site-footer {
+      background-color: var(--color-text);
+      color: var(--color-neutral-light);
+      padding: var(--spacing-xl) 0;
+      text-align: center;
+    }
+    .site-footer a {
+      color: var(--color-primary-light);
+    }
+    .site-footer a:hover {
+      color: var(--color-white);
+    }
+    .social-links {
+      display: flex;
+      justify-content: center;
+      gap: var(--spacing-lg);
+      list-style: none;
+      margin-bottom: var(--spacing-md);
+    }
+    .social-links a svg {
+      width: 28px;
+      height: 28px;
+      transition: transform var(--transition-medium), color var(--transition-medium);
+    }
+    .social-links a:hover svg {
+      transform: scale(1.2) translateY(-2px);
+      color: var(--color-white);
+    }
+    
+    /* 7. Responsive Design */
+    @media (max-width: 768px) {
+      .main-nav { display: none; }
+      .header-cta { display: none; }
+      .mobile-nav-toggle {
+        display: block;
+        background: none;
+        border: none;
+        cursor: pointer;
+        z-index: 1001;
+      }
+      .mobile-nav-toggle svg {
+        width: 32px;
+        height: 32px;
+      }
+      .hero {
+        text-align: center;
+      }
+      .hero::before {
+        background: rgba(44, 62, 80, 0.7);
+      }
+      .hero-content {
+        margin: 0 auto;
+      }
+    }
+
+    @media (min-width: 768px) {
+      .container {
+        padding-left: var(--spacing-lg);
+        padding-right: var(--spacing-lg);
+      }
+      .about-grid {
+        grid-template-columns: 1fr 1fr;
+      }
+      .about-image-container {
+        order: 2;
+      }
+      .about-content {
+        order: 1;
+      }
+      .contact-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+
+    @media (min-width: 1024px) {
+        .contact-grid {
+            grid-template-columns: 1fr 1.5fr;
+        }
+    }
+
+    /* 8. Accessibility Styles */
+    :focus-visible {
+      outline: 3px solid var(--color-accent);
+      outline-offset: 3px;
+      border-radius: var(--border-radius);
+    }
+    .btn:focus-visible, .testimonial-dot:focus-visible, .social-links a:focus-visible {
+        outline-offset: 4px;
+    }
+
+
+    /* 9. Print Styles */
+    @media print {
+      body {
+        background-color: var(--color-white);
+        color: #000;
+      }
+      .site-header, .site-footer, .hero, #services, #about, #testimonials, .cta-banner {
+        display: none;
+      }
+      #contact {
+        display: block !important;
+        box-shadow: none;
+      }
+      a {
+        text-decoration: none;
+        color: #000;
+      }
+      a[href^="http"]:after {
+        content: " (" attr(href) ")";
+      }
+    }
+
+  </style>
+</head>
+<body>
+
+  <!-- 
+    SVG Icon System 
+    These icons are embedded for use throughout the site.
+  -->
+  <svg xmlns="http://www.w3.org/2000/svg" style="display: none;">
+    <symbol id="icon-paw" viewBox="0 0 512 512"><path fill="currentColor" d="M256 64C158.8 64 80 142.8 80 240c0 49.8 20.2 95.1 52.8 128.8-15.3 12-34.3 26.6-47.2 38.6-11.4 10.5-13.3 27.6-4.3 40.4 9.1 12.8 26.3 14.8 40.4 4.3 13.9-10.4 34.2-25.2 52.1-39.7 32.1 14.4 69.4 22.5 109.1 22.5 97.2 0 176-78.8 176-176S353.2 64 256 64zm-88 176c-17.7 0-32-14.3-32-32s14.3-32 32-32 32 14.3 32 32-14.3 32-32 32zm88-64c-17.7 0-32-14.3-32-32s14.3-32 32-32 32 14.3 32 32-14.3 32-32 32zm88 64c-17.7 0-32-14.3-32-32s14.3-32 32-32 32 14.3 32 32-14.3 32-32 32z"/></symbol>
+    <symbol id="icon-scissors-brush" viewBox="0 0 24 24"><g fill="currentColor"><path d="M16.2,8.46c.28-.28.28-.73,0-1L13,4.24a.71.71,0,0,0-1,0L5.75,10.46a.71.71,0,0,0,0,1l3.22,3.22a.71.71,0,0,0,1,0l5.1-5.1V8.46ZM7.17,11.17l5.1-5.1,1.77,1.77-5.1,5.1Z"/><path d="M6.88,14.07,3.67,17.29a.71.71,0,0,0,0,1l1.77,1.77a.71.71,0,0,0,1,0l3.22-3.22v-.71H8.33Z"/><circle cx="5.33" cy="5.33" r="1.42"/><circle cx="5.33" cy="18.67" r="1.42"/><path d="M19.08,8.46a2.13,2.13,0,1,0-2.13-2.13A2.13,2.13,0,0,0,19.08,8.46Z"/></g></symbol>
+    <symbol id="icon-wash-dry" viewBox="0 0 24 24"><path fill="currentColor" d="M12 2a9 9 0 00-9 9c0 4.48 3.33 8.21 7.62 8.86L11 22v-2.14A9 9 0 0012 2zm0 16a7 7 0 01-7-7c0-2.22 1.04-4.22 2.69-5.54l1.41 1.41C8.21 8.7 7 10.74 7 13a5 5 0 005 5v-2h2v4.14A7 7 0 0112 18zM19.78 8.22a.75.75 0 00-1.06-1.06L17 8.94V7.5a.75.75 0 00-1.5 0V9a.75.75 0 00.75.75h1.5a.75.75 0 00.53-.22l1.06-1.06zM20.5 12h-1.5a.75.75 0 000 1.5h1.5a.75.75 0 000-1.5z"/></symbol>
+    <symbol id="icon-nail-clippers" viewBox="0 0 24 24"><path fill="currentColor" d="M20.41 2.59a2 2 0 00-2.83 0L3.29 16.88a2 2 0 000 2.83l1.42 1.41a2 2 0 002.83 0L21.83 6.83a2 2 0 000-2.83L20.41 2.59zM7.5 18a1.5 1.5 0 110-3 1.5 1.5 0 010 3zM18 7.5a1.5 1.5 0 11-3 0 1.5 1.5 0 013 0z"/></symbol>
+    <symbol id="icon-styling" viewBox="0 0 24 24"><path fill="currentColor" d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></symbol>
+    <symbol id="icon-phone" viewBox="0 0 24 24"><path fill="currentColor" d="M6.62 10.79a15.25 15.25 0 006.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z"/></symbol>
+    <symbol id="icon-email" viewBox="0 0 24 24"><path fill="currentColor" d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/></symbol>
+    <symbol id="icon-location" viewBox="0 0 24 24"><path fill="currentColor" d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5a2.5 2.5 0 010-5 2.5 2.5 0 010 5z"/></symbol>
+    <symbol id="icon-clock" viewBox="0 0 24 24"><path fill="currentColor" d="M12 2a10 10 0 100 20 10 10 0 000-20zm0 18a8 8 0 110-16 8 8 0 010 16zm-1-13h2v6h-2zm0 7h2v2h-2z"/></symbol>
+    <symbol id="icon-facebook" viewBox="0 0 24 24"><path fill="currentColor" d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3V2z"/></symbol>
+    <symbol id="icon-instagram" viewBox="0 0 24 24"><path fill="currentColor" d="M7.8 2h8.4C19.4 2 22 4.6 22 7.8v8.4a5.8 5.8 0 0 1-5.8 5.8H7.8C4.6 22 2 19.4 2 16.2V7.8A5.8 5.8 0 0 1 7.8 2m-.2 2A3.6 3.6 0 0 0 4 7.6v8.8C4 18.39 5.61 20 7.6 20h8.8a3.6 3.6 0 0 0 3.6-3.6V7.6C20 5.61 18.39 4 16.4 4H7.6m9.65 1.5a1.25 1.25 0 1 1-2.5 0 1.25 1.25 0 0 1 2.5 0M12 7a5 5 0 1 1 0 10 5 5 0 0 1 0-10m0 2a3 3 0 1 0 0 6 3 3 0 0 0 0-6z"/></symbol>
+    <symbol id="icon-menu" viewBox="0 0 24 24"><path fill="currentColor" d="M3 18h18v-2H3v2zm0-5h18v-2H3v2zm0-7v2h18V6H3z"></path></symbol>
+  </svg>
+
+  <header class="site-header" id="site-header">
+    <div class="container header-container">
+      <a href="#hero" class="logo">
+        <svg><use xlink:href="#icon-paw"/></svg>
+        <span>The Pampered Pooch</span>
+      </a>
+      <nav class="main-nav" aria-label="Main Navigation">
+        <ul>
+          <li><a href="#services">Services</a></li>
+          <li><a href="#about">About Us</a></li>
+          <li><a href="#testimonials">Testimonials</a></li>
+          <li><a href="#contact">Contact</a></li>
+        </ul>
+      </nav>
+      <a href="mailto:christine@thepamperedpooch.com.au?subject=Grooming Appointment Request&body=Hi Christine, I'd like to book an appointment for my dog. Please contact me to discuss available times." class="btn btn-primary header-cta">Book Now</a>
+      <button class="mobile-nav-toggle" aria-label="Open navigation menu" aria-expanded="false">
+          <svg><use xlink:href="#icon-menu"/></svg>
+      </button>
+    </div>
+  </header>
+  
+  <main>
+    <!-- Hero Section -->
+    <section class="hero" id="hero">
+      <div class="hero-bg-pattern"></div>
+      <!-- TODO: Replace with a licensed, high-quality image before production -->
+      <img src="https://images.unsplash.com/photo-1590822619219-5843a2965789?w=1920&q=80" 
+           alt="A happy, well-groomed golden retriever smiling." 
+           class="hero-background"
+           width="1920" height="1080"
+           loading="eager">
+      
+      <div class="container hero-content">
+        <h1>Give Your Best Friend the Pampering They Deserve</h1>
+        <p class="subheadline mt-xl mb-xl">
+          Professional, gentle, and loving dog grooming in Willunga. We make your furry family member look and feel their absolute best.
+        </p>
+        <a href="mailto:christine@thepamperedpooch.com.au?subject=Grooming Appointment Request&body=Hi Christine, I'd like to book an appointment for my dog. Please contact me to discuss available times." class="btn btn-primary pulse">Book an Appointment</a>
+      </div>
+    </section>
+
+    <!-- Services Section -->
+    <section class="section" id="services">
+      <div class="container">
+        <div class="section-header text-center">
+            <h2 class="animate-on-scroll">Our Pampering Services</h2>
+            <p class="subheadline animate-on-scroll">Tailored grooming packages to suit every pooch's needs. We use only high-quality, pet-safe products.</p>
+        </div>
+        <div class="services-grid">
+          <div class="service-card animate-on-scroll" style="transition-delay: 100ms;">
+            <svg class="service-card__icon icon-snip"><use xlink:href="#icon-scissors-brush"/></svg>
+            <h3>Full Grooming Service</h3>
+            <p>A complete spa day! Includes a warm hydrobath, blow-dry, full-body clip & style, nail trim, and ear clean.</p>
+            <p class="service-card__price">Starting from $75</p>
+            <a href="mailto:christine@thepamperedpooch.com.au?subject=Quote for Full Grooming" class="btn btn-secondary mt-xl">Get a Quote</a>
+          </div>
+          <div class="service-card animate-on-scroll" style="transition-delay: 200ms;">
+            <svg class="service-card__icon"><use xlink:href="#icon-wash-dry"/></svg>
+            <h3>Wash & Dry</h3>
+            <p>A refreshing wash with premium shampoos and conditioners, followed by a gentle blow-dry and brush out.</p>
+            <p class="service-card__price">Starting from $40</p>
+            <a href="mailto:christine@thepamperedpooch.com.au?subject=Quote for Wash & Dry" class="btn btn-secondary mt-xl">Get a Quote</a>
+          </div>
+          <div class="service-card animate-on-scroll" style="transition-delay: 300ms;">
+            <svg class="service-card__icon"><use xlink:href="#icon-nail-clippers"/></svg>
+            <h3>Nail Care</h3>
+            <p>Keep your pup's paws healthy with our safe and gentle nail trimming and filing service. Walk-ins welcome!</p>
+            <p class="service-card__price">Starting from $15</p>
+            <a href="tel:+61885564155" class="btn btn-secondary mt-xl">Call Now</a>
+          </div>
+          <div class="service-card animate-on-scroll" style="transition-delay: 400ms;">
+            <svg class="service-card__icon"><use xlink:href="#icon-styling"/></svg>
+            <h3>Styling & Finishing</h3>
+            <p>The perfect finishing touches, from breed-specific cuts to creative styling, ensuring your pooch is picture-perfect.</p>
+            <p class="service-card__price">Custom Pricing</p>
+            <a href="mailto:christine@thepamperedpooch.com.au?subject=Quote for Styling" class="btn btn-secondary mt-xl">Get a Quote</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- About Section -->
+    <section class="section" id="about">
+        <div class="section-separator mb-xl">
+            <div class="line"></div>
+            <svg><use xlink:href="#icon-paw"/></svg>
+            <div class="line"></div>
+        </div>
+        <div class="container about-grid">
+            <div class="about-image-container animate-on-scroll">
+                <!-- TODO: Replace with a licensed, professional photo of the owner/team -->
+                <img src="https://images.unsplash.com/photo-1554151228-14d9def656e4?w=800&q=80" 
+                     alt="Christine, owner and head groomer of The Pampered Pooch, with a happy dog."
+                     loading="lazy"
+                     width="800" height="900">
+            </div>
+            <div class="about-content animate-on-scroll" style="transition-delay: 200ms;">
+                <h2>Meet Christine: Passionate, Professional, Patient</h2>
+                <p class="mb-lg">
+                    Welcome to The Pampered Pooch! My name is Christine, and my lifelong love for animals has culminated in this dream salon. With over 10 years of professional grooming experience, I believe in a gentle, fear-free approach. I treat every dog as if they were my own, ensuring a safe, calm, and positive experience from the moment they walk through the door.
+                </p>
+                <p>
+                    My qualifications and commitment to ongoing education mean your pet is in the best hands. I specialize in handling anxious dogs and am dedicated to making grooming a happy and routine part of their lives.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials Section -->
+    <section class="section" id="testimonials">
+      <div class="container text-center">
+        <div class="section-header">
+            <h2 class="animate-on-scroll">What Our Happy Clients Say</h2>
+        </div>
+        <div class="testimonial-carousel animate-on-scroll" style="transition-delay: 200ms;">
+          <div class="testimonial-slider" id="testimonial-slider">
+            <!-- Testimonials will be injected here by JavaScript -->
+          </div>
+        </div>
+        <div class="testimonial-dots" id="testimonial-dots">
+            <!-- Dots will be injected here by JavaScript -->
+        </div>
+      </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section class="section" id="contact">
+        <div class="container">
+            <div class="section-header text-center">
+                <h2 class="animate-on-scroll">Get In Touch</h2>
+                <p class="subheadline animate-on-scroll">We'd love to hear from you! Contact us to book an appointment or ask any questions.</p>
+            </div>
+            <div class="contact-grid animate-on-scroll" style="transition-delay: 200ms;">
+                <div class="contact-details-wrapper">
+                    <div class="contact-details">
+                        <h3>Contact Information</h3>
+                        <ul>
+                            <li>
+                                <svg><use xlink:href="#icon-location"/></svg>
+                                <span>Lot 102 Main Road, Willunga, SA 5172</span>
+                            </li>
+                            <li>
+                                <svg><use xlink:href="#icon-phone"/></svg>
+                                <a href="tel:+61885564155">08 8556 4155</a>
+                            </li>
+                            <li>
+                                <svg><use xlink:href="#icon-email"/></svg>
+                                <a href="mailto:christine@thepamperedpooch.com.au">christine@thepamperedpooch.com.au</a>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="business-hours mt-xl">
+                        <h3>Business Hours</h3>
+                        <ul>
+                            <li>
+                                <svg><use xlink:href="#icon-clock"/></svg>
+                                <span><strong>Mon - Fri:</strong> 9:00 AM - 5:00 PM</span>
+                            </li>
+                            <li>
+                                <svg><use xlink:href="#icon-clock"/></svg>
+                                <span><strong>Saturday:</strong> 10:00 AM - 2:00 PM</span>
+                            </li>
+                            <li>
+                                <svg><use xlink:href="#icon-clock"/></svg>
+                                <span><strong>Sunday:</strong> Closed</span>
+                            </li>
+                        </ul>
+                        <p><em>All services by appointment only.</em></p>
+                    </div>
+                </div>
+                <div class="map-container">
+                    <!-- TODO: Replace this div with an embedded Google Map iframe for a fully interactive map. -->
+                    <svg><use xlink:href="#icon-location"></use></svg>
+                    <p>
+                        <strong>Find us on Main Road in Willunga!</strong>
+                        <br>
+                        (Interactive map coming soon)
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- CTA Banner Section -->
+    <section class="section cta-banner">
+        <div class="container animate-on-scroll">
+            <h2 class="mb-lg">Ready for a Happy, Healthy Pup?</h2>
+            <p class="subheadline mb-xl">Let us treat your furry friend to the spa day they've been dreaming of.</p>
+            <a href="mailto:christine@thepamperedpooch.com.au?subject=Grooming Appointment Request&body=Hi Christine, I'd like to book an appointment for my dog. Please contact me to discuss available times." class="btn btn-primary pulse" style="background-color: var(--color-white); color: var(--color-accent-dark);">
+                Book an Appointment Now
+            </a>
+        </div>
+    </section>
+
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">
+      <ul class="social-links">
+        <li><a href="#" aria-label="Facebook"><svg><use xlink:href="#icon-facebook"/></svg></a></li>
+        <li><a href="#" aria-label="Instagram"><svg><use xlink:href="#icon-instagram"/></svg></a></li>
+      </ul>
+      <p>&copy; <span id="current-year"></span> The Pampered Pooch. All Rights Reserved.</p>
+      <p>thepamperedpooch.com.au</p>
+    </div>
+  </footer>
+
+  <script>
+    'use strict';
+    
+    // ==============================================
+    // Testimonial Data
+    // ==============================================
+    const testimonials = [
+      {
+        name: "Sarah Mitchell",
+        review: "Christine transformed my nervous rescue dog into a confident, beautifully groomed pup. Her gentle approach and patience are simply amazing!",
+        petName: "Buddy",
+        // TODO: Replace with licensed customer photos
+        image: "https://images.unsplash.com/photo-1549517045-bc93de075e53?w=100&h=100&fit=crop&q=80"
+      },
+      {
+        name: "David Chen",
+        review: "Absolutely top-notch service. My poodle has never looked better! The cut is perfect and he always comes back happy and relaxed. Highly recommend.",
+        petName: "Coco",
+        image: "https://images.unsplash.com/photo-1596854407944-bf87f6fdd49e?w=100&h=100&fit=crop&q=80"
+      },
+      {
+        name: "Emily Rodriguez",
+        review: "The best groomer in the region, hands down. Christine is so knowledgeable and clearly loves what she does. I wouldn't trust anyone else with my senior dog.",
+        petName: "Max",
+        image: "https://images.unsplash.com/photo-1580489944761-15a19d654956?w=100&h=100&fit=crop&q=80"
+      }
+    ];
+
+    document.addEventListener('DOMContentLoaded', () => {
+
+      // ==============================================
+      // Scroll-Triggered Animations
+      // ==============================================
+      const animatedElements = document.querySelectorAll('.animate-on-scroll');
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('is-visible');
+            // Optional: unobserve after animation
+            // observer.unobserve(entry.target);
+          }
+        });
+      }, {
+        threshold: 0.1 // Trigger when 10% of the element is visible
+      });
+
+      animatedElements.forEach(el => observer.observe(el));
+
+      // ==============================================
+      // Sticky Header
+      // ==============================================
+      const header = document.getElementById('site-header');
+      window.addEventListener('scroll', () => {
+        if (window.scrollY > 50) {
+          header.classList.add('scrolled');
+        } else {
+          header.classList.remove('scrolled');
+        }
+      });
+
+      // ==============================================
+      // Testimonial Carousel
+      // ==============================================
+      const slider = document.getElementById('testimonial-slider');
+      const dotsContainer = document.getElementById('testimonial-dots');
+      
+      if (slider && dotsContainer && testimonials.length > 0) {
+        let currentIndex = 0;
+        let touchStartX = 0;
+        let touchEndX = 0;
+        let intervalId;
+
+        const createSlide = (testimonial, index) => {
+            const slide = document.createElement('div');
+            slide.className = 'testimonial-slide';
+            slide.setAttribute('role', 'group');
+            slide.setAttribute('aria-roledescription', 'slide');
+            slide.setAttribute('aria-label', `${index + 1} of ${testimonials.length}`);
+            slide.innerHTML = `
+                <img src="${testimonial.image}" alt="Photo of ${testimonial.name}" loading="lazy" width="100" height="100">
+                <blockquote class="testimonial-review">${testimonial.review}</blockquote>
+                <p class="testimonial-author">${testimonial.name} <span>(Owner of ${testimonial.petName})</span></p>
+            `;
+            return slide;
+        };
+        
+        const createDot = (index) => {
+            const dot = document.createElement('button');
+            dot.className = 'testimonial-dot';
+            dot.setAttribute('aria-label', `Go to slide ${index + 1}`);
+            dot.addEventListener('click', () => {
+                goToSlide(index);
+                resetInterval();
+            });
+            return dot;
+        };
+
+        testimonials.forEach((testimonial, index) => {
+            slider.appendChild(createSlide(testimonial, index));
+            dotsContainer.appendChild(createDot(index));
+        });
+
+        const slides = slider.children;
+        const dots = dotsContainer.children;
+
+        const updateCarousel = () => {
+            slider.style.transform = `translateX(-${currentIndex * 100}%)`;
+            Array.from(dots).forEach((dot, index) => {
+                dot.classList.toggle('active', index === currentIndex);
+            });
+        };
+
+        const goToSlide = (index) => {
+            currentIndex = (index + slides.length) % slides.length;
+            updateCarousel();
+        };
+
+        const nextSlide = () => goToSlide(currentIndex + 1);
+        
+        const startInterval = () => {
+            intervalId = setInterval(nextSlide, 5000);
+        };
+        
+        const resetInterval = () => {
+            clearInterval(intervalId);
+            startInterval();
+        };
+
+        const carousel = document.querySelector('.testimonial-carousel');
+        carousel.addEventListener('mouseenter', () => clearInterval(intervalId));
+        carousel.addEventListener('mouseleave', startInterval);
+
+        // Touch/Swipe support
+        slider.addEventListener('touchstart', e => { touchStartX = e.changedTouches[0].screenX; }, {passive: true});
+        slider.addEventListener('touchend', e => {
+            touchEndX = e.changedTouches[0].screenX;
+            handleSwipe();
+        }, {passive: true});
+
+        const handleSwipe = () => {
+            if (touchEndX < touchStartX - 50) goToSlide(currentIndex + 1); // Swiped left
+            if (touchEndX > touchStartX + 50) goToSlide(currentIndex - 1); // Swiped right
+            resetInterval();
+        };
+        
+        updateCarousel();
+        startInterval();
+      }
+
+      // ==============================================
+      // Dynamic Year in Footer
+      // ==============================================
+      document.getElementById('current-year').textContent = new Date().getFullYear();
+
+    });
+  </script>
+
+</body>
+</html>
